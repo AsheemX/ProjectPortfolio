@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسين وسوم SEO -->
+    <meta name="description" content="تعرف على شركة البناء المتكاملة - الشركة الرائدة في خدمات العزل المائي والحراري في السعودية. خبرة واسعة في عزل الخزانات، الأسطح، ومواقف السيارات">
+    <meta name="keywords" content="شركة البناء المتكاملة, من نحن, عزل خزانات, عزل أسطح, إيبوكسي مواقف, مقاولات عزل">
+    <meta name="author" content="شركة البناء المتكاملة">
+    
+    <!-- تحسين تحميل CSS -->
+    <link rel="preload" href="css/bootstrap.rtl.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </noscript>
+    
+    <title>من نحن - شركة البناء المتكاملة | الخبرة والتميز في خدمات العزل</title>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "شركة البناء المتكاملة",
+        "description": "شركة متخصصة في خدمات العزل المائي والحراري للخزانات والأسطح ومواقف السيارات",
+        "url": "https://www.al-benaa.com",
+        "logo": "https://www.al-benaa.com/images/logo.png",
+        "foundingDate": "2010",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "SA"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+966512345678",
+            "contactType": "customer service"
+        },
+        "sameAs": [
+            "https://facebook.com/albenaa",
+            "https://twitter.com/albenaa"
+        ]
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-bg: #f8f9fa;
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('images/pattern.png') repeat;
+            opacity: 0.1;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .about-hero .lead {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .story-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .vision-mission {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .values-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .team-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #f8f9fa;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover img {
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .team-member h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .team-member p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            height: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+        }
+
+        .value-card:hover .value-icon {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .value-card:hover h4,
+        .value-card:hover p {
+            color: white;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.8;
+            transition: all 0.3s ease;
+        }
+
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #c0392b 100%);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #c0392b 0%, var(--secondary-color) 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+            text-decoration: none;
+        }
+
+        /* تحسينات التجاوب */
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 120px 0 80px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-hero .lead {
+                font-size: 1.1rem;
+            }
+            
+            .team-member img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .value-card {
+                padding: 30px 20px;
+            }
+        }
+
+        /* تأثيرات الحركة */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: white !important;
+        }
+
+        /* التذييل */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-hard-hat text-warning me-2"></i>
+                شركة البناء المتكاملة
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">من نحن</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#services">خدماتنا</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">معرض الأعمال</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="tel:+966512345678" class="btn btn-outline-primary me-2">
+                        <i class="fas fa-phone me-1"></i> اتصل الآن
+                    </a>
+                    <a href="mailto:info@al-benaa.com" class="btn btn-outline-secondary">
+                        <i class="fas fa-envelope me-1"></i> إرسال بريد
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="about-hero">
+        <div class="container">
+            <h1 class="fade-in">من نحن</h1>
+            <p class="lead fade-in">شركة البناء المتكاملة - الخبرة والتميز في خدمات العزل منذ 2010</p>
+            <div class="mt-4 fade-in">
+                <a href="#story" class="btn btn-custom me-3">تعرف على قصتنا</a>
+                <a href="index.html#services" class="btn btn-outline-light">استكشف خدماتنا</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم القصة -->
+    <section id="story" class="story-section">
+        <div class="container">
+            <h2 class="section-title fade-in">قصتنا</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h3 class="mb-4">رحلة التميز في عالم العزل</h3>
+                    <p class="lead mb-4">
+                        بدأت رحلتنا عام 2010 بمشاريع صغيرة في مجال العزل المائي والحراري، وتوسعنا لنصبح من الشركات الرائدة في مجال خدمات العزل المتكاملة في المملكة العربية السعودية.
+                    </p>
+                    <p class="mb-4">
+                        على مدار أكثر من 14 عاماً، اكتسبنا خبرة واسعة في تقديم حلول العزل المبتكرة للخزانات، الأسطح، ومواقف السيارات. نحن نفتخر بتقديم خدمات عالية الجودة تلبي أعلى المعايير العالمية.
+                    </p>
+                    <p>
+                        من خلال فريقنا من المهندسين والفنيين المتخصصين، استطعنا تنفيذ المئات من المشاريع الناجحة التي حازت على ثقة عملائنا الكرام.
+                    </p>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <img src="images/about-story.jpg" alt="قصة شركة البناء المتكاملة" class="img-fluid rounded shadow" loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/600x400/2c3e50/ffffff?text=صورة+قصة+الشركة'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الرؤية والرسالة -->
+    <section class="vision-mission">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0 fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-eye value-icon"></i>
+                        <h3 class="mb-4">رؤيتنا</h3>
+                        <p class="lead">
+                            أن نكون الخيار الأول في مجال خدمات العزل المائي والحراري في المملكة العربية السعودية، من خلال تقديم حلول مبتكرة وجودة استثنائية تتجاوز توقعات عملائنا.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-bullseye value-icon"></i>
+                        <h3 class="mb-4">رسالتنا</h3>
+                        <p class="lead">
+                            تقديم خدمات عزل متكاملة ومستدامة باستخدام أحدث التقنيات والمواد عالية الجودة، مع الالتزام بمعايير السلامة والأمان والكفاءة في جميع مشاريعنا.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم القيم -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title fade-in">قيمنا</h2>
+            <div class="row">
+                <div class="col-md-4 fade-in">
+                    <div class="value-card">
+                        <i class="fas fa-award value-icon"></i>
+                        <h4>الجودة</h4>
+                        <p>نلتزم بأعلى معايير الجودة في جميع خدماتنا، باستخدام مواد عالية الجودة وتقنيات متطورة.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="value-card">
+                        <i class="fas fa-handshake value-icon"></i>
+                        <h4>الثقة</h4>
+                        <p>نعمل على بناء علاقات طويلة الأمد مع عملائنا based on الثقة المتبادلة والشفافية.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="value-card">
+                        <i class="fas fa-lightbulb value-icon"></i>
+                        <h4>الابتكار</h4>
+                        <p>نسعى دائماً لتطوير حلول مبتكرة تلبي احتياجات العملاء وتواكب أحدث التقنيات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الإحصائيات -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 stat-item fade-in">
+                    <div class="stat-number">+14</div>
+                    <div class="stat-label">سنة خبرة</div>
+                </div>
+                <div class="col-md-3 col-6 stat-item fade-in">
+                    <div class="stat-number">+500</div>
+                    <div class="stat-label">مشروع منفذ</div>
+                </div>
+                <div class="col-md-3 col-6 stat-item fade-in">
+                    <div class="stat-number">+300</div>
+                    <div class="stat-label">عميل راضي</div>
+                </div>
+                <div class="col-md-3 col-6 stat-item fade-in">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">تزامن بالتسليم</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفريق -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title fade-in">فريقنا</h2>
+            <div class="row">
+                <div class="col-md-4 fade-in">
+                    <div class="team-member">
+                        <img src="images/ceo.jpg" alt="المدير العام - أحمد محمد" loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/200x200/2c3e50/ffffff?text=المدير+العام'">
+                        <h4>أحمد محمد</h4>
+                        <p>المدير العام - مهندس مدني</p>
+                        <p class="small text-muted">خبرة 15 عاماً في مجال المقاولات والعزل</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="team-member">
+                        <img src="images/technical-manager.jpg" alt="مدير التقنية - محمد علي" loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/200x200/3498db/ffffff?text=مدير+التقنية'">
+                        <h4>محمد علي</h4>
+                        <p>مدير التقنية - مهندس عزل</p>
+                        <p class="small text-muted">متخصص في تقنيات العزل المائي والحراري</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="team-member">
+                        <img src="images/operations-manager.jpg" alt="مدير العمليات - خالد إبراهيم" loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/200x200/e74c3c/ffffff?text=مدير+العمليات'">
+                        <h4>خالد إبراهيم</h4>
+                        <p>مدير العمليات</p>
+                        <p class="small text-muted">يشرف على تنفيذ جميع المشاريع باحترافية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section class="py-5 bg-white">
+        <div class="container text-center">
+            <h2 class="section-title fade-in">هل تريد التعاون معنا؟</h2>
+            <p class="lead mb-4 fade-in">نحن هنا لمساعدتك في تنفيذ مشروعك بأعلى معايير الجودة</p>
+            <div class="fade-in">
+                <a href="tel:+966512345678" class="btn btn-custom btn-lg me-3">
+                    <i class="fas fa-phone me-2"></i>اتصل بنا
+                </a>
+                <a href="index.html#services" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-info-circle me-2"></i>استكشف خدماتنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>شركة البناء المتكاملة</h5>
+                    <p>شركة متخصصة في تقديم حلول العزل المائي والحراري بجودة عالية وأسعار منافسة.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" class="me-2 text-decoration-none">
+                            <i class="fab fa-facebook-f text-primary fa-lg"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="me-2 text-decoration-none">
+                            <i class="fab fa-twitter text-info fa-lg"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="me-2 text-decoration-none">
+                            <i class="fab fa-instagram text-danger fa-lg"></i>
+                        </a>
+                        <a href="https://wa.me/966512345678" target="_blank" class="text-decoration-none">
+                            <i class="fab fa-whatsapp text-success fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>روابط سريعة</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-light">الرئيسية</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-light">من نحن</a></li>
+                        <li><a href="index.html#services" class="text-decoration-none text-light">خدماتنا</a></li>
+                        <li><a href="portfolio.html" class="text-decoration-none text-light">معرض الأعمال</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <h5>خدماتنا</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="portfolio.html?category=tank-insulation" class="text-decoration-none text-light">عزل خزانات المياه</a></li>
+                        <li><a href="portfolio.html?category=roof-insulation" class="text-decoration-none text-light">عزل الأسطح والمباني</a></li>
+                        <li><a href="portfolio.html?category=epoxy" class="text-decoration-none text-light">إيبوكسي مواقف السيارات</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>اتصل بنا</h5>
+                    <address class="text-light">
+                        <p class="mb-2">الهاتف: <a href="tel:+966512345678" class="text-decoration-none text-light">+966512345678</a></p>
+                        <p class="mb-0">البريد الإلكتروني: <a href="mailto:info@al-benaa.com" class="text-decoration-none text-light">info@al-benaa.com</a></p>
+                    </address>
+                    <div class="mt-3">
+                        <a href="https://wa.me/966512345678" class="btn btn-success btn-sm me-2" target="_blank">
+                            <i class="fab fa-whatsapp me-1"></i> واتساب
+                        </a>
+                        <a href="tel:+966512345678" class="btn btn-primary btn-sm">
+                            <i class="fas fa-phone me-1"></i> اتصل
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2024 شركة البناء المتكاملة. جميع الحقوق محفوظة.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- أيقونة الواتساب -->
+    <a href="https://wa.me/966512345678" class="whatsapp-float" target="_blank" aria-label="تواصل معنا عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+    
+    <script>
+        // تأثيرات الظهور عند التمرير
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                fadeObserver.observe(element);
+            });
+
+            // التنقل السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 3.75rem;
+            height: 3.75rem;
+            bottom: 2.5rem;
+            left: 2.5rem;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.875rem;
+            box-shadow: 0.125rem 0.125rem 0.188rem #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+    </style>
+</body>
+</html>

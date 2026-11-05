@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="لوحة تحكم إدارة مشاريع المُهيب | Al-Moheeb - نظام إدارة محتوى متكامل">
+    <meta name="robots" content="noindex, nofollow">
+    <title>لوحة التحكم - إدارة المشاريع | المُهيب | Al-Moheeb</title>
+
+    <!-- تحسين تحميل CSS -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* .logo-img {
+                height: 40px;
+            } */
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* شاشة الدخول - متجاوبة */
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 576px) {
+            .login-container {
+                margin: 20px;
+                padding: 25px 15px;
+            }
+        }
+
+        /* الشريط الجانبي - تصميم متجاوب */
+        .admin-sidebar {
+            background: var(--primary-color);
+            color: white;
+            min-height: 100vh;
+            padding: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: var(--sidebar-width);
+            z-index: 1000;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                transform: translateX(100%);
+                width: 85%;
+            }
+
+            .admin-sidebar.mobile-open {
+                transform: translateX(0);
+            }
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        .admin-sidebar .nav-link {
+            color: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #34495e;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .admin-sidebar .nav-link:hover {
+            background: #34495e;
+            padding-right: 25px;
+        }
+
+        .admin-sidebar .nav-link.active {
+            background: var(--secondary-color);
+            border-right: 4px solid #fff;
+        }
+
+        /* الهيدر الرئيسي - متجاوب */
+        .admin-header {
+            background: white;
+            border-bottom: 1px solid #dee2e6;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 24px;
+            padding: 5px 10px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content {
+            margin-right: var(--sidebar-width);
+            transition: margin-right 0.3s ease;
+            min-height: 100vh;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                margin-right: 0;
+            }
+        }
+
+        /* منطقة رفع الملفات */
+        .upload-area {
+            border: 2px dashed #007bff;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 576px) {
+            .upload-area {
+                padding: 20px 15px;
+            }
+
+            .upload-area h5 {
+                font-size: 16px;
+            }
+
+            .upload-area p {
+                font-size: 14px;
+            }
+        }
+
+        .upload-area:hover {
+            background: #e3f2fd;
+            border-color: #0056b3;
+        }
+
+        .upload-area.dragover {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+        }
+
+        /* بطاقات المشاريع */
+        .project-card {
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+            width: 100%;
+        }
+
+        @media (max-width: 576px) {
+            .project-image {
+                height: 160px;
+            }
+        }
+
+        /* الأزرار */
+        .btn-custom {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-custom:active {
+            transform: translateY(0);
+        }
+
+        /* التبويبات */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #projects-tab {
+            display: block;
+        }
+
+        /* إخفاء لوحة التحكم في البداية */
+        #adminPanel {
+            display: none;
+        }
+
+        /* حالة الرفع */
+        .upload-status {
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .upload-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .upload-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .upload-status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .upload-status.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        /* تحسينات للهواتف */
+        @media (max-width: 768px) {
+            .container-fluid {
+                padding: 0 15px;
+            }
+
+            .card {
+                margin-bottom: 15px;
+            }
+
+            .btn-lg {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            h4,
+            h5,
+            h6 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .d-flex.justify-content-between {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .filter-buttons {
+                width: 100%;
+            }
+
+            .form-select {
+                width: 100% !important;
+            }
+
+            .text-center .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* تحسينات للأجهزة اللوحية */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .admin-sidebar {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-right: 250px;
+            }
+        }
+
+        /* تحسينات التمرير على الهاتف */
+        .mobile-scroll {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* تحسينات النماذج */
+        .form-control,
+        .form-select {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
+        }
+
+        /* تحسينات البطاقات */
+        .card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0 0 !important;
+            padding: 20px;
+            font-weight: 600;
+        }
+
+        /* تحسينات النص */
+        .text-muted {
+            font-size: 13px;
+        }
+
+        /* تحسينات الأيقونات */
+        .fa-3x {
+            font-size: 2.5em;
+        }
+
+        @media (max-width: 576px) {
+            .fa-3x {
+                font-size: 2em;
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* إحصائيات سريعة - تصميم جديد */
+        .stats-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-card.success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+        }
+
+        .stats-card.warning {
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        }
+
+        .stats-card.info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        /* تحسينات قسم الإعدادات */
+        .settings-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .settings-section h6 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .user-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .user-item {
+            padding: 10px 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: white;
+        }
+
+        .forgot-password-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .forgot-password-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- شاشة الدخول -->
+    <div id="loginScreen" class="login-container">
+        <div class="text-center mb-4">
+            <i class="fas fa-hard-hat fa-3x text-warning mb-3"></i>
+            <h3>لوحة تحكم المشاريع</h3>
+            <p class="text-muted">يجب تسجيل الدخول للوصول إلى لوحة التحكم</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">اسم المستخدم</label>
+                <input type="text" class="form-control" id="username" required value="admin">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">كلمة المرور</label>
+                <input type="password" class="form-control" id="password" required value="123456">
+            </div>
+            <div class="mb-3 text-start">
+                <a href="#" class="forgot-password-link" onclick="projectManager.showForgotPassword()">
+                    <i class="fas fa-key me-1"></i>هل نسيت كلمة المرور؟
+                </a>
+            </div>
+            <button type="submit" class="btn btn-custom w-100" id="loginBtn">
+                <i class="fas fa-sign-in-alt me-2"></i>دخول
+            </button>
+        </form>
+
+        <div class="mt-3 text-center">
+            <small class="text-muted">بيانات الدخول الافتراضية: admin / 123456</small>
+        </div>
+    </div>
+
+    <!-- لوحة التحكم الرئيسية -->
+    <div id="adminPanel">
+        <!-- زر القائمة للموبايل -->
+        <div class="admin-header">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center">
+                    <button class="mobile-menu-btn me-3">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h4 class="mb-0" id="pageTitle">إدارة المشاريع</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- طبقة التعتيم للموبايل -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- الشريط الجانبي -->
+        <div class="admin-sidebar" id="adminSidebar">
+            <div class="p-3 text-center border-bottom">
+                <!-- <i class="fas fa-hard-hat fa-2x text-warning mb-2"></i> -->
+                <img src="images/logo.jpg" alt="المُهيب | Al-Moheeb" class="logo-img">
+                <h6 class="mb-0">المُهيب | Al-Moheeb</h6>
+                <small>لوحة إدارة المشاريع</small>
+            </div>
+
+            <nav class="nav flex-column">
+                <a class="nav-link active" data-tab="projects">
+                    <i class="fas fa-images me-2"></i>إدارة المشاريع
+                </a>
+                <a class="nav-link" data-tab="add-project">
+                    <i class="fas fa-plus me-2"></i>إضافة مشروع
+                </a>
+                <a class="nav-link" data-tab="stats">
+                    <i class="fas fa-chart-bar me-2"></i>الإحصائيات
+                </a>
+                <a class="nav-link" data-tab="settings">
+                    <i class="fas fa-cog me-2"></i>الإعدادات
+                </a>
+                <a class="nav-link" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt me-2"></i>تسجيل الخروج
+                </a>
+            </nav>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="main-content">
+            <div class="container-fluid mt-4 mobile-scroll">
+                <!-- قسم إدارة المشاريع -->
+                <div id="projects-tab" class="tab-content">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-column flex-md-row">
+                        <h5 class="mb-3 mb-md-0">المشاريع الحالية</h5>
+                        <div class="filter-buttons">
+                            <select id="categoryFilter" class="form-select">
+                                <option value="all">جميع التصنيفات</option>
+                                <option value="tank-insulation">عزل الخزانات</option>
+                                <option value="roof-insulation">عزل الأسطح</option>
+                                <option value="epoxy">إيبوكسي المواقف</option>
+                                <option value="marble">اعمال الرخام </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="projectsList" class="row">
+                        <!-- سيتم ملؤها بالJavaScript -->
+                    </div>
+                </div>
+
+                <!-- قسم إضافة مشروع -->
+                <div id="add-project-tab" class="tab-content">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="card-title mb-0">
+                                        <i class="fas fa-plus me-2"></i>إضافة مشروع جديد
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="addProjectForm">
+                                        <div class="mb-3">
+                                            <label for="projectTitle" class="form-label">
+                                                اسم المشروع <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" id="projectTitle" required
+                                                placeholder="أدخل اسم المشروع">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="projectCategory" class="form-label">
+                                                التصنيف <span class="text-danger">*</span>
+                                            </label>
+                                            <select class="form-select" id="projectCategory" required>
+                                                <option value="">اختر التصنيف</option>
+                                                <option value="tank-insulation">عزل الخزانات</option>
+                                                <option value="roof-insulation">عزل الأسطح</option>
+                                                <option value="epoxy">إيبوكسي المواقف</option>
+                                                <option value="marble">أعمال الرخام</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="projectDescription" class="form-label">
+                                                وصف المشروع <span class="text-danger">*</span>
+                                            </label>
+                                            <textarea class="form-control" id="projectDescription" rows="3" required
+                                                placeholder="أدخل وصف مفصل للمشروع"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                صورة المشروع <span class="text-danger">*</span>
+                                            </label>
+                                            <div id="uploadStatus"></div>
+                                            <div class="upload-area" id="uploadArea">
+                                                <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+                                                <h5>اسحب وأفلت الصورة هنا</h5>
+                                                <p class="text-muted">أو انقر لاختيار صورة</p>
+                                                <input type="file" id="projectImage" accept="image/*"
+                                                    style="display: none;">
+                                            </div>
+                                            <div id="imagePreview" class="mt-3 text-center" style="display: none;">
+                                                <img id="previewImg" class="img-thumbnail"
+                                                    style="max-height: 200px; width: auto;">
+                                                <div class="mt-2">
+                                                    <small id="imageSource" class="text-muted"></small>
+                                                </div>
+                                                <br>
+                                                <button type="button" class="btn btn-sm btn-danger mt-2"
+                                                    onclick="removeImage()">
+                                                    <i class="fas fa-times"></i> إزالة الصورة
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="projectLocation" class="form-label">موقع
+                                                        المشروع</label>
+                                                    <input type="text" class="form-control" id="projectLocation"
+                                                        placeholder="مثال: الرياض">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="projectDuration" class="form-label">مدة
+                                                        التنفيذ</label>
+                                                    <input type="text" class="form-control" id="projectDuration"
+                                                        placeholder="مثال: 10 أيام">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-custom btn-lg me-2 mb-2"
+                                                id="saveProjectBtn">
+                                                <i class="fas fa-save me-2"></i>حفظ المشروع
+                                            </button>
+                                            <button type="button" class="btn btn-secondary btn-lg mb-2"
+                                                onclick="projectManager.showTab('projects')">
+                                                <i class="fas fa-arrow-right me-2"></i>رجوع
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم الإحصائيات -->
+                <div id="stats-tab" class="tab-content">
+                    <div class="row">
+                        <div class="col-md-3 col-6">
+                            <div class="stats-card">
+                                <div class="text-center">
+                                    <i class="fas fa-images fa-2x mb-2"></i>
+                                    <h3 id="totalProjects">0</h3>
+                                    <p>إجمالي المشاريع</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stats-card success">
+                                <div class="text-center">
+                                    <i class="fas fa-water fa-2x mb-2"></i>
+                                    <h3 id="tankProjects">0</h3>
+                                    <p>عزل الخزانات</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stats-card warning">
+                                <div class="text-center">
+                                    <i class="fas fa-home fa-2x mb-2"></i>
+                                    <h3 id="roofProjects">0</h3>
+                                    <p>عزل الأسطح</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stats-card info">
+                                <div class="text-center">
+                                    <i class="fas fa-car fa-2x mb-2"></i>
+                                    <h3 id="epoxyProjects">0</h3>
+                                    <p>إيبوكسي المواقف</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stats-card info">
+                                <div class="text-center">
+                                    <i class="fas fa-car fa-2x mb-2"></i>
+                                    <h3 id="marbleProjects">0</h3>
+                                    <p> اعمال الرخام </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <i class="fas fa-chart-bar me-2"></i>نظرة عامة على المشاريع
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div id="projectsChart" style="height: 300px;">
+                                        <canvas id="chartCanvas"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم الإعدادات -->
+                <div id="settings-tab" class="tab-content">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">إعدادات النظام</h5>
+                                </div>
+                                <div class="card-body">
+                                    <!-- قسم إدارة المستخدمين -->
+                                    <div class="settings-section">
+                                        <h6><i class="fas fa-users me-2"></i>إدارة المستخدمين</h6>
+
+                                        <!-- إضافة مستخدم جديد -->
+                                        <div class="mb-4">
+                                            <h6 class="text-primary mb-3">إضافة مستخدم جديد</h6>
+                                            <form id="addUserForm">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">اسم المستخدم الجديد</label>
+                                                            <input type="text" class="form-control" id="newUsername"
+                                                                placeholder="أدخل اسم المستخدم" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">كلمة المرور</label>
+                                                            <input type="password" class="form-control"
+                                                                id="newUserPassword" placeholder="أدخل كلمة المرور"
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-success">
+                                                        <i class="fas fa-user-plus me-2"></i>إضافة مستخدم
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <!-- قائمة المستخدمين -->
+                                        <div class="mb-4">
+                                            <h6 class="text-primary mb-3">المستخدمون الحاليون</h6>
+                                            <div class="user-list" id="usersList">
+                                                <!-- سيتم ملؤها بالJavaScript -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- قسم تغيير كلمة المرور -->
+                                    <!-- <div class="settings-section">
+                                        <h6><i class="fas fa-key me-2"></i>تغيير كلمة المرور</h6>
+                                        <form id="changePasswordForm">
+                                            <div class="mb-3">
+                                                <label class="form-label">اسم المستخدم الحالي</label>
+                                                <input type="text" class="form-control" id="currentUsername"
+                                                    value="admin" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">كلمة المرور الحالية</label>
+                                                <input type="password" class="form-control" id="currentPassword"
+                                                    placeholder="أدخل كلمة المرور الحالية" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">كلمة المرور الجديدة</label>
+                                                <input type="password" class="form-control" id="newPassword"
+                                                    placeholder="أدخل كلمة المرور الجديدة" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">تأكيد كلمة المرور الجديدة</label>
+                                                <input type="password" class="form-control" id="confirmNewPassword"
+                                                    placeholder="أعد إدخال كلمة المرور الجديدة" required>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-custom">
+                                                    <i class="fas fa-save me-2"></i>تغيير كلمة المرور
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div> -->
+                                    <!-- قسم تغيير كلمة المرور -->
+                                    <div class="settings-section">
+                                        <h6><i class="fas fa-key me-2"></i>تغيير كلمة المرور</h6>
+                                        <form id="changePasswordForm">
+                                            <div class="mb-3">
+                                                <label class="form-label">اسم المستخدم الحالي</label>
+                                                <input type="text" class="form-control" id="currentUsername" readonly>
+                                                <small class="text-muted">سيتم تغيير كلمة مرور المستخدم المسجل
+                                                    حاليًا</small>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">كلمة المرور الحالية</label>
+                                                <input type="password" class="form-control" id="currentPassword"
+                                                    placeholder="أدخل كلمة المرور الحالية" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">كلمة المرور الجديدة</label>
+                                                <input type="password" class="form-control" id="newPassword"
+                                                    placeholder="أدخل كلمة المرور الجديدة" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">تأكيد كلمة المرور الجديدة</label>
+                                                <input type="password" class="form-control" id="confirmNewPassword"
+                                                    placeholder="أعد إدخال كلمة المرور الجديدة" required>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-custom">
+                                                    <i class="fas fa-save me-2"></i>تغيير كلمة المرور
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- قسم إدارة البيانات -->
+                                    <div class="settings-section">
+                                        <h6><i class="fas fa-database me-2"></i>إدارة البيانات</h6>
+                                        <div class="card bg-light">
+                                            <div class="card-body">
+                                                <small>
+                                                    <strong>نظام التخزين:</strong>
+                                                    <span id="uploadSystemStatus">جاري التحقق...</span>
+                                                    <br>
+                                                    <strong>المشاريع المحفوظة:</strong>
+                                                    <span id="projectsCount">0</span> مشروع
+                                                    <br>
+                                                    <strong>المستخدمون المسجلون:</strong>
+                                                    <span id="usersCount">0</span> مستخدم
+                                                    <br>
+                                                    <strong>حالة الخادم:</strong>
+                                                    <span id="serverStatus">جاري الفحص...</span>
+                                                    <br>
+                                                    <strong>آخر تحديث:</strong>
+                                                    <span id="lastUpdate">-</span>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button class="btn btn-sm btn-outline-success w-100 mb-2"
+                                                onclick="projectManager.exportData()">
+                                                <i class="fas fa-download me-1"></i>تصدير البيانات
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger w-100"
+                                                onclick="projectManager.clearAllData()">
+                                                <i class="fas fa-trash me-1"></i>مسح جميع البيانات
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // نظام إدارة المشاريع مع MySQL - محدث للاتصال مع PHP
+        class ProjectManager {
+            constructor() {
+                this.projects = [];
+                this.users = [];
+                this.currentUser = null;
+                this.currentImageFile = null;
+                this.chart = null;
+                this.init();
+            }
+
+            async init() {
+                console.log('🚀 جاري تهيئة نظام إدارة المشاريع...');
+                this.setupEventListeners();
+                this.checkLogin();
+                this.setupMobileMenu();
+            }
+
+            // تحميل المشاريع من قاعدة البيانات
+            async loadProjects() {
+                try {
+                    this.showMainStatus('جاري تحميل المشاريع...', 'info');
+                    console.log('📥 جاري تحميل المشاريع...');
+
+                    const response = await fetch('api.php?action=get_projects');
+                    const result = await response.json();
+
+                    if (result.success) {
+                        this.projects = result.data || [];
+                        this.displayProjects();
+                        this.updateSystemStatus();
+                        this.updateStats();
+                        this.hideMainStatus();
+                        this.showMainStatus(`تم تحميل ${this.projects.length} مشروع ✅`, 'success');
+                    } else {
+                        throw new Error(result.message || 'فشل في تحميل المشاريع');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في تحميل المشاريع:', error);
+                    this.projects = [];
+                    this.displayProjects();
+                    this.showMainStatus('فشل في تحميل المشاريع ❌', 'error');
+                }
+            }
+
+            // تحميل المستخدمين من قاعدة البيانات
+            async loadUsers() {
+                try {
+                    const response = await fetch('api.php?action=get_users');
+                    const result = await response.json();
+
+                    if (result.success) {
+                        this.users = result.data || [];
+                        this.displayUsers();
+                        this.updateSystemStatus();
+                    } else {
+                        throw new Error(result.message || 'فشل في تحميل المستخدمين');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في تحميل المستخدمين:', error);
+                    this.users = [];
+                    this.displayUsers();
+                }
+            }
+
+            // تسجيل الدخول
+            async login(username, password) {
+                try {
+                    this.setLoginButtonState(true);
+
+                    const formData = new FormData();
+                    formData.append('action', 'login');
+                    formData.append('username', username);
+                    formData.append('password', password);
+
+                    const response = await fetch('api.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        this.currentUser = { username, loginTime: new Date() };
+                        localStorage.setItem('adminUser', JSON.stringify(this.currentUser));
+                        this.showAdminPanel();
+                        await this.loadProjects();
+                        await this.loadUsers();
+                        // تحديث اسم المستخدم في نموذج تغيير كلمة المرور
+                        this.updateSystemStatus();
+                        // this.updateUserInterface();
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في تسجيل الدخول:', error);
+                    return false;
+                } finally {
+                    this.setLoginButtonState(false);
+                }
+            }
+
+            // إضافة مستخدم جديد
+            async addUser(username, password) {
+                try {
+                    const formData = new FormData();
+                    formData.append('action', 'add_user');
+                    formData.append('username', username);
+                    formData.append('password', password);
+
+                    const response = await fetch('api.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        await this.loadUsers();
+                        return { success: true, message: 'تم إضافة المستخدم بنجاح' };
+                    } else {
+                        throw new Error(result.message || 'فشل في إضافة المستخدم');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في إضافة المستخدم:', error);
+                    throw error;
+                }
+            }
+
+            // تغيير كلمة المرور
+            async changePassword(currentPassword, newPassword) {
+                try {
+                    const formData = new FormData();
+                    formData.append('action', 'change_password');
+                    formData.append('username', this.currentUser.username);
+                    formData.append('current_password', currentPassword);
+                    formData.append('new_password', newPassword);
+
+                    const response = await fetch('api.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        return { success: true, message: 'تم تغيير كلمة المرور بنجاح' };
+                    } else {
+                        throw new Error(result.message || 'فشل في تغيير كلمة المرور');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في تغيير كلمة المرور:', error);
+                    throw error;
+                }
+            }
+
+            // استعادة كلمة المرور
+            async resetPassword(username) {
+                try {
+                    const formData = new FormData();
+                    formData.append('action', 'reset_password');
+                    formData.append('username', username);
+
+                    const response = await fetch('api.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        return { success: true, message: 'تم إعادة تعيين كلمة المرور إلى 123456' };
+                    } else {
+                        throw new Error(result.message || 'فشل في إعادة تعيين كلمة المرور');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في إعادة تعيين كلمة المرور:', error);
+                    throw error;
+                }
+            }
+
+            // تحديث واجهة المستخدم بناءً على المستخدم المسجل
+            updateUserInterface() {
+                if (this.currentUser && this.currentUser.username) {
+                    // تحديث اسم المستخدم في نموذج تغيير كلمة المرور
+                    document.getElementById('currentUsername').value = this.currentUser.username;
+
+                    // يمكنك إضافة تحديثات أخرى هنا إذا لزم الأمر
+                    // مثل عرض اسم المستخدم في الهيدر، إلخ
+                }
+            }
+
+            // حذف مستخدم
+            async deleteUser(userId) {
+                try {
+                    const formData = new FormData();
+                    formData.append('action', 'delete_user');
+                    formData.append('id', userId);
+
+                    const response = await fetch('api.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        await this.loadUsers();
+                        return { success: true, message: 'تم حذف المستخدم بنجاح' };
+                    } else {
+                        throw new Error(result.message || 'فشل في حذف المستخدم');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في حذف المستخدم:', error);
+                    throw error;
+                }
+            }
+
+            // إضافة مشروع جديد
+            async addProject(projectData) {
+                try {
+                    this.setSaveButtonState(true);
+
+
+                    // إضافة للتصحيح
+                    console.log('📝 بيانات المشروع المراد إضافته:', projectData);
+                    // رفع الصورة أولاً
+                    let imageUrl = '';
+                    if (this.currentImageFile) {
+                        console.log('🖼️ جاري رفع الصورة...');
+                        const uploadResult = await this.uploadImage(this.currentImageFile);
+                        if (uploadResult.success) {
+                            imageUrl = uploadResult.imageUrl;
+                            console.log('✅ تم رفع الصورة:', imageUrl);
+                        } else {
+                            throw new Error(uploadResult.message || 'فشل في رفع الصورة');
+                        }
+                    } else {
+                        throw new Error('يجب اختيار صورة للمشروع');
+                    }
+
+                    // -----------------------
+                    // 🔍 DEBUG: تسجيل البيانات قبل الإرسال
+                    console.log('📤 بيانات المشروع المرسلة:', {
+                        title: projectData.title,
+                        category: projectData.category,
+                        description: projectData.description,
+                        location: projectData.location,
+                        duration: projectData.duration,
+                        image_url: imageUrl
+                    });
+                    // -----------------------
+
+
+                    // إضافة المشروع
+                    const formData = new FormData();
+                    formData.append('action', 'add_project');
+                    formData.append('title', projectData.title);
+                    formData.append('category', projectData.category);
+                    formData.append('description', projectData.description);
+                    formData.append('image_url', imageUrl);
+                    formData.append('location', projectData.location);
+                    formData.append('duration', projectData.duration);
+                    // ------------------------
+                    // 🔍 DEBUG: تسجيل بيانات FormData
+                    console.log('📋 FormData contents:');
+                    for (let pair of formData.entries()) {
+                        console.log(pair[0] + ': ' + pair[1]);
+                    }
+                    // --------------------------
+                    const response = await fetch('api.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+                    // -----------------------
+                    // 🔍 DEBUG: تسجيل النتيجة
+                    console.log('📥 استجابة الخادم:', result);
+
+                    // -----------------------
+                    if (result.success) {
+                        await this.loadProjects(); // إعادة تحميل المشاريع
+                        return { success: true };
+                    } else {
+                        throw new Error(result.message || 'فشل في إضافة المشروع');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في إضافة المشروع:', error);
+                    throw error;
+                } finally {
+                    this.setSaveButtonState(false);
+                }
+            }
+
+            // رفع الصورة
+            async uploadImage(file) {
+                try {
+                    const formData = new FormData();
+                    formData.append('image', file);
+
+                    const response = await fetch('upload.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    return await response.json();
+                } catch (error) {
+                    console.error('❌ خطأ في رفع الصورة:', error);
+                    return { success: false, message: 'فشل في رفع الصورة' };
+                }
+            }
+
+            // حذف مشروع
+            async deleteProject(projectId) {
+                try {
+                    const formData = new FormData();
+                    formData.append('action', 'delete_project');
+                    formData.append('id', projectId);
+
+                    const response = await fetch('api.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        await this.loadProjects(); // إعادة تحميل المشاريع
+                        return { success: true };
+                    } else {
+                        throw new Error(result.message || 'فشل في حذف المشروع');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في حذف المشروع:', error);
+                    throw error;
+                }
+            }
+
+            // تحديث الإحصائيات
+            updateStats() {
+                const total = this.projects.length;
+                const tank = this.projects.filter(p => p.category === 'tank-insulation').length;
+                const roof = this.projects.filter(p => p.category === 'roof-insulation').length;
+                const epoxy = this.projects.filter(p => p.category === 'epoxy').length;
+                const marble = this.projects.filter(p => p.category === 'marble').length;
+
+                document.getElementById('totalProjects').textContent = total;
+                document.getElementById('tankProjects').textContent = tank;
+                document.getElementById('roofProjects').textContent = roof;
+                document.getElementById('epoxyProjects').textContent = epoxy;
+                document.getElementById('marbleProjects').textContent = marble;
+
+                this.updateChart();
+            }
+
+            // تحديث الرسم البياني
+            updateChart() {
+                const ctx = document.getElementById('chartCanvas').getContext('2d');
+
+                if (this.chart) {
+                    this.chart.destroy();
+                }
+
+                const tank = this.projects.filter(p => p.category === 'tank-insulation').length;
+                const roof = this.projects.filter(p => p.category === 'roof-insulation').length;
+                const epoxy = this.projects.filter(p => p.category === 'epoxy').length;
+                const marble = this.projects.filter(p => p.category === 'marble').length;
+
+                this.chart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['عزل الخزانات', 'عزل الأسطح', 'إيبوكسي المواقف', 'اعمال الرخام'],
+                        datasets: [{
+                            data: [tank, roof, epoxy, marble],
+                            backgroundColor: [
+                                '#e74c3c',
+                                '#3498db',
+                                '#2ecc71',
+                                '#f39c12'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                rtl: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            // عرض المستخدمين
+            displayUsers() {
+                const container = document.getElementById('usersList');
+
+                if (this.users.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-3 text-muted">
+                            <i class="fas fa-users fa-2x mb-2"></i>
+                            <p>لا يوجد مستخدمون مسجلون</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = this.users.map(user => `
+                    <div class="user-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>${user.username}</strong>
+                                <br>
+                                <small class="text-muted">تم الإنشاء: ${this.formatDate(user.created_at)}</small>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-warning" onclick="projectManager.resetUserPassword(${user.id}, '${user.username}')" 
+                                        ${user.username === 'admin' ? 'disabled' : ''}>
+                                    <i class="fas fa-key"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="projectManager.deleteUserHandler(${user.id}, '${user.username}')"
+                                        ${user.username === 'admin' ? 'disabled' : ''}>
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // معالج حذف المستخدم
+            async deleteUserHandler(userId, username) {
+                if (confirm(`هل أنت متأكد من حذف المستخدم "${username}"؟`)) {
+                    try {
+                        await this.deleteUser(userId);
+                        this.showMainStatus('تم حذف المستخدم بنجاح ✅', 'success');
+                    } catch (error) {
+                        this.showMainStatus('فشل في حذف المستخدم ❌', 'error');
+                    }
+                }
+            }
+
+            // معالج إعادة تعيين كلمة المرور
+            async resetUserPassword(userId, username) {
+                if (confirm(`هل تريد إعادة تعيين كلمة مرور المستخدم "${username}" إلى 123456؟`)) {
+                    try {
+                        await this.resetPassword(username);
+                        this.showMainStatus('تم إعادة تعيين كلمة المرور بنجاح ✅', 'success');
+                    } catch (error) {
+                        this.showMainStatus('فشل في إعادة تعيين كلمة المرور ❌', 'error');
+                    }
+                }
+            }
+
+            // عرض نسيان كلمة المرور
+            showForgotPassword() {
+                const username = prompt('أدخل اسم المستخدم الذي تريد استعادة كلمة المرور له:');
+                if (username) {
+                    this.resetUserPassword(null, username);
+                }
+            }
+
+            // تصدير البيانات
+            async exportData() {
+                try {
+                    const data = {
+                        projects: this.projects,
+                        users: this.users,
+                        exportDate: new Date().toISOString()
+                    };
+
+                    const dataStr = JSON.stringify(data, null, 2);
+                    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(dataBlob);
+                    link.download = `al-moheeb-backup-${new Date().toISOString().split('T')[0]}.json`;
+                    link.click();
+
+                    URL.revokeObjectURL(link.href);
+                    this.showMainStatus('تم تصدير البيانات بنجاح ✅', 'success');
+                } catch (error) {
+                    console.error('❌ خطأ في تصدير البيانات:', error);
+                    this.showMainStatus('فشل في تصدير البيانات ❌', 'error');
+                }
+            }
+
+            // مسح جميع البيانات
+            async clearAllData() {
+                if (confirm('⚠️ هل أنت متأكد من مسح جميع البيانات؟ لا يمكن التراجع عن هذا الإجراء!')) {
+                    try {
+                        // حذف جميع المشاريع واحداً تلو الآخر
+                        for (const project of this.projects) {
+                            await this.deleteProject(project.id);
+                        }
+                        this.showMainStatus('تم مسح جميع البيانات ✅', 'success');
+                    } catch (error) {
+                        console.error('❌ خطأ في مسح البيانات:', error);
+                        this.showMainStatus('فشل في مسح البيانات ❌', 'error');
+                    }
+                }
+            }
+
+            // نظام الدخول
+            checkLogin() {
+                const savedUser = localStorage.getItem('adminUser');
+                if (savedUser) {
+                    this.currentUser = JSON.parse(savedUser);
+                    this.showAdminPanel();
+                    this.loadProjects();
+                    this.loadUsers();
+                    this.updateUserInterface();
+                }
+            }
+
+            logout() {
+                this.currentUser = null;
+                localStorage.removeItem('adminUser');
+                this.showLoginScreen();
+            }
+
+            showLoginScreen() {
+                document.getElementById('loginScreen').style.display = 'block';
+                document.getElementById('adminPanel').style.display = 'none';
+            }
+
+            showAdminPanel() {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                this.showTab('projects');
+            }
+
+            showTab(tabName) {
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.style.display = 'none';
+                });
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                const targetTab = document.getElementById(tabName + '-tab');
+                if (targetTab) {
+                    targetTab.style.display = 'block';
+                }
+
+                const activeLink = document.querySelector(`[data-tab="${tabName}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+
+                const titles = {
+                    'projects': 'إدارة المشاريع',
+                    'add-project': 'إضافة مشروع جديد',
+                    'stats': 'الإحصائيات',
+                    'settings': 'الإعدادات'
+                };
+                document.getElementById('pageTitle').textContent = titles[tabName] || 'لوحة التحكم';
+
+                if (tabName === 'projects') {
+                    this.displayProjects();
+                }
+
+                if (tabName === 'stats') {
+                    this.updateStats();
+                }
+
+                if (tabName === 'settings') {
+                    this.updateSystemStatus();
+                    this.updateUserInterface(); // أضف هذا السطر
+                }
+            }
+
+            displayProjects(filterCategory = 'all') {
+                const container = document.getElementById('projectsList');
+                let filteredProjects = this.projects;
+
+                if (filterCategory !== 'all') {
+                    filteredProjects = this.projects.filter(project => project.category === filterCategory);
+                }
+
+                if (filteredProjects.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">لا توجد مشاريع</h5>
+                            <p class="text-muted">قم بإضافة مشروع جديد لبدء العرض</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = filteredProjects.map(project => `
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card project-card">
+                            <img src="${project.image_url}" class="card-img-top project-image" alt="${project.title}" 
+                                onerror="this.src='images/1.jpg'">
+                            <div class="card-body">
+                                <h6 class="card-title">${project.title}</h6>
+                                <p class="card-text small text-muted">${project.description?.substring(0, 80) || 'لا يوجد وصف'}...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-primary">${this.getCategoryName(project.category)}</span>
+                                    <small class="text-muted">${this.formatDate(project.created_at)}</small>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-sm btn-outline-danger w-100" onclick="projectManager.deleteProjectHandler(${project.id})">
+                                    <i class="fas fa-trash"></i> حذف
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            async deleteProjectHandler(projectId) {
+                if (confirm('هل أنت متأكد من حذف هذا المشروع؟')) {
+                    try {
+                        await this.deleteProject(projectId);
+                        this.showMainStatus('تم حذف المشروع بنجاح ✅', 'success');
+                    } catch (error) {
+                        this.showMainStatus('فشل في حذف المشروع ❌', 'error');
+                    }
+                }
+            }
+
+            getCategoryName(category) {
+                const categories = {
+                    'tank-insulation': 'عزل الخزانات',
+                    'roof-insulation': 'عزل الأسطح',
+                    'epoxy': 'إيبوكسي المواقف',
+                    'marble': 'اعمال الرخام'
+                };
+                return categories[category] || category;
+            }
+
+            formatDate(dateString) {
+                if (!dateString) return '';
+                const date = new Date(dateString);
+                return date.toLocaleDateString('ar-EG');
+            }
+
+            showUploadStatus(message, type) {
+                const statusElement = document.getElementById('uploadStatus');
+                statusElement.innerHTML = `
+                    <div class="upload-status ${type}">
+                        <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation-triangle' : 'info'}-circle me-2"></i>
+                        ${message}
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    if (statusElement.innerHTML.includes(message)) {
+                        statusElement.innerHTML = '';
+                    }
+                }, 5000);
+            }
+
+            showMainStatus(message, type) {
+                let statusElement = document.getElementById('mainStatus');
+                if (!statusElement) {
+                    statusElement = document.createElement('div');
+                    statusElement.id = 'mainStatus';
+                    statusElement.className = 'upload-status';
+                    document.querySelector('.main-content .container-fluid').prepend(statusElement);
+                }
+
+                statusElement.className = `upload-status ${type}`;
+                statusElement.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation-triangle' : 'info'}-circle me-2"></i>
+                    ${message}
+                `;
+                statusElement.style.display = 'block';
+
+                if (type === 'success') {
+                    setTimeout(() => {
+                        statusElement.style.display = 'none';
+                    }, 3000);
+                }
+            }
+
+            hideMainStatus() {
+                const statusElement = document.getElementById('mainStatus');
+                if (statusElement) {
+                    statusElement.style.display = 'none';
+                }
+            }
+
+            setLoginButtonState(loading) {
+                const loginBtn = document.getElementById('loginBtn');
+                if (loading) {
+                    loginBtn.disabled = true;
+                    loginBtn.innerHTML = '<div class="loading-spinner me-2"></div> جاري الدخول...';
+                } else {
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>دخول';
+                }
+            }
+
+            setSaveButtonState(loading) {
+                const saveBtn = document.getElementById('saveProjectBtn');
+                if (loading) {
+                    saveBtn.disabled = true;
+                    saveBtn.innerHTML = '<div class="loading-spinner me-2"></div> جاري الحفظ...';
+                } else {
+                    saveBtn.disabled = false;
+                    saveBtn.innerHTML = '<i class="fas fa-save me-2"></i>حفظ المشروع';
+                }
+            }
+
+            resetForm() {
+                document.getElementById('addProjectForm').reset();
+                document.getElementById('imagePreview').style.display = 'none';
+                document.getElementById('uploadArea').style.display = 'block';
+                document.getElementById('uploadStatus').innerHTML = '';
+                this.currentImageFile = null;
+            }
+
+            // updateSystemStatus() {
+            //     document.getElementById('uploadSystemStatus').innerHTML = 
+            //         '<span class="text-success">نظام قاعدة البيانات ✅</span>';
+            //     document.getElementById('serverStatus').innerHTML = 
+            //         '<span class="text-success">متصل ✅</span>';
+            //     document.getElementById('projectsCount').textContent = this.projects.length;
+            //     document.getElementById('usersCount').textContent = this.users.length;
+            //     document.getElementById('lastUpdate').textContent = new Date().toLocaleString('ar-EG');
+            // }
+            // تحديث النظام
+            updateSystemStatus() {
+                document.getElementById('uploadSystemStatus').innerHTML =
+                    '<span class="text-success">نظام قاعدة البيانات ✅</span>';
+                document.getElementById('serverStatus').innerHTML =
+                    '<span class="text-success">متصل ✅</span>';
+                document.getElementById('projectsCount').textContent = this.projects.length;
+                document.getElementById('usersCount').textContent = this.users.length;
+                document.getElementById('lastUpdate').textContent = new Date().toLocaleString('ar-EG');
+
+                // تحديث اسم المستخدم في نموذج تغيير كلمة المرور
+                if (this.currentUser && this.currentUser.username) {
+                    document.getElementById('currentUsername').value = this.currentUser.username;
+                }
+            }
+            setupEventListeners() {
+                // نظام الدخول
+                document.getElementById('loginForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+
+                    if (await this.login(username, password)) {
+                        this.showMainStatus('تم الدخول بنجاح! ✅', 'success');
+                    } else {
+                        this.showMainStatus('اسم المستخدم أو كلمة المرور غير صحيحة! ❌', 'error');
+                    }
+                });
+
+                // تسجيل الخروج
+                document.getElementById('logoutBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.logout();
+                });
+
+                // التنقل بين التبويبات
+                document.querySelectorAll('.nav-link[data-tab]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const tabName = link.getAttribute('data-tab');
+                        this.showTab(tabName);
+                    });
+                });
+
+                // تصفية المشاريع
+                document.getElementById('categoryFilter').addEventListener('change', (e) => {
+                    this.displayProjects(e.target.value);
+                });
+
+                // إضافة مستخدم جديد
+                document.getElementById('addUserForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const username = document.getElementById('newUsername').value;
+                    const password = document.getElementById('newUserPassword').value;
+
+                    try {
+                        await this.addUser(username, password);
+                        this.showMainStatus('تم إضافة المستخدم بنجاح! ✅', 'success');
+                        document.getElementById('addUserForm').reset();
+                    } catch (error) {
+                        this.showMainStatus('فشل في إضافة المستخدم ❌', 'error');
+                    }
+                });
+
+                // تغيير كلمة المرور
+                document.getElementById('changePasswordForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const currentPassword = document.getElementById('currentPassword').value;
+                    const newPassword = document.getElementById('newPassword').value;
+                    const confirmPassword = document.getElementById('confirmNewPassword').value;
+
+                    if (newPassword !== confirmPassword) {
+                        this.showMainStatus('كلمات المرور غير متطابقة! ❌', 'error');
+                        return;
+                    }
+
+                    try {
+                        await this.changePassword(currentPassword, newPassword);
+                        this.showMainStatus('تم تغيير كلمة المرور بنجاح! ✅', 'success');
+                        document.getElementById('changePasswordForm').reset();
+                    } catch (error) {
+                        this.showMainStatus('فشل في تغيير كلمة المرور ❌', 'error');
+                    }
+                });
+
+                // رفع الصور
+                const uploadArea = document.getElementById('uploadArea');
+                const fileInput = document.getElementById('projectImage');
+
+                uploadArea.addEventListener('click', () => {
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        this.currentImageFile = e.target.files[0];
+                        this.previewImage(this.currentImageFile);
+                    }
+                });
+
+                // إضافة مشروع جديد
+                document.getElementById('addProjectForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const formData = {
+                        title: document.getElementById('projectTitle').value,
+                        category: document.getElementById('projectCategory').value,
+                        description: document.getElementById('projectDescription').value,
+                        location: document.getElementById('projectLocation').value,
+                        duration: document.getElementById('projectDuration').value
+                    };
+
+                    // ----------------------------
+                    // 🔍 DEBUG: تسجيل بيانات النموذج
+                    console.log('📝  قبل الارسال بيانات النموذج:', formData);
+                    // ------------------------------
+                    if (!formData.category) {
+                        this.showUploadStatus('⚠️ يرجى اختيار تصنيف للمشروع', 'warning');
+                        return;
+                    }
+
+                    if (!this.currentImageFile) {
+                        this.showUploadStatus('⚠️ يرجى اختيار صورة للمشروع', 'warning');
+                        return;
+                    }
+
+                    try {
+                        await this.addProject(formData);
+                        this.showMainStatus('تم إضافة المشروع بنجاح! ✅', 'success');
+                        this.showTab('projects');
+                        this.resetForm();
+                    } catch (error) {
+                        this.showMainStatus('فشل في إضافة المشروع ❌', 'error');
+                    }
+                });
+            }
+
+            async previewImage(file) {
+                try {
+                    this.showUploadStatus('جاري معالجة الصورة...', 'info');
+
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        document.getElementById('previewImg').src = e.target.result;
+                        document.getElementById('imagePreview').style.display = 'block';
+                        document.getElementById('uploadArea').style.display = 'none';
+
+                        document.getElementById('imageSource').textContent = '☁️ جاهزة للحفظ';
+                        document.getElementById('imageSource').className = 'text-info';
+                    };
+                    reader.readAsDataURL(file);
+
+                } catch (error) {
+                    this.showUploadStatus('فشل في معالجة الصورة ❌', 'error');
+                }
+            }
+
+            setupMobileMenu() {
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                const sidebar = document.getElementById('adminSidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+
+                menuBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('mobile-open');
+                    overlay.classList.toggle('active');
+                });
+
+                overlay.addEventListener('click', () => {
+                    sidebar.classList.remove('mobile-open');
+                    overlay.classList.remove('active');
+                });
+
+                document.querySelectorAll('.admin-sidebar .nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 768) {
+                            sidebar.classList.remove('mobile-open');
+                            overlay.classList.remove('active');
+                        }
+                    });
+                });
+            }
+        }
+
+        // دالة مساعدة لإزالة الصورة
+        function removeImage() {
+            document.getElementById('projectImage').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('uploadArea').style.display = 'block';
+            document.getElementById('uploadStatus').innerHTML = '';
+            if (window.projectManager) {
+                window.projectManager.currentImageFile = null;
+            }
+        }
+
+        // تهيئة النظام
+        console.log('🎯 بدء تحميل نظام إدارة المشاريع...');
+        const projectManager = new ProjectManager();
+        window.projectManager = projectManager;
+        console.log('✅ نظام إدارة المشاريع جاهز للاستخدام!');
+    </script>
+</body>
+
+</html>

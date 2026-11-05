@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسين وسوم SEO للمعرض -->
+    <meta name="description"
+        content="معرض مشاريع المُهيب - شاهد أحدث أعمالنا في عزل الخزانات، الأسطح، ومواقف السيارات بالإيبوكسي، وخدمات جلي وتلميع الرخام. شاهد أحدث أعمالنا المنفذة بأعلى جودة في السعودية.">
+    <meta name="keywords" content="عزل خزانات الرياض, عزل أسطح, إيبوكسي مواقف سيارات, جلي رخام, تلميع رخام, عزل مائي, عزل حراري, شركة عزل, المُهيب, Al-Moheeb, مقاول عزل, خدمات بناء">    <meta name="author" content="المُهيب | Al-Moheeb">
+
+    <!-- تحسين تحميل CSS -->
+    <link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+
+    <title>معرض المشاريع - المُهيب | Al-Moheeb | عزل خزانات، أسطح، مواقف، جلي رخام، تلميع رخام - السعودية</title>
+
+    <!-- Structured Data لتحسين SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "معرض مشاريع المُهيب | Al-Moheeb",
+        "description": "معرض يضم أحدث مشاريع العزل والجلي والتلميع التي تم تنفيذها بواسطة المُهيب | Al-Moheeb",
+        "url": "https://www.al-moheeb.com/portfolio.html",
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": 12,
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "مشاريع عزل الخزانات"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "مشاريع عزل الأسطح"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "مشاريع إيبوكسي المواقف"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "مشاريع جلي وتلميع الرخام"
+                }
+            ]
+        }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-bg: #f8f9fa;
+        }
+
+        /* شريط التنقل المأخوذ من الكود المرفق */
+        .navbar {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background-color: white !important;
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 5px;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .portfolio-section {
+            padding: 100px 0 50px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .filter-buttons {
+            margin-bottom: 30px;
+        }
+
+        .portfolio-item {
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: white;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 20px;
+            background: white;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .project-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .project-info p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .section-title {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            position: relative;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* تحسين أيقونة الواتساب */
+        .whatsapp-float {
+            position: fixed;
+            width: 3.75rem;
+            height: 3.75rem;
+            bottom: 2.5rem;
+            left: 2.5rem;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.875rem;
+            box-shadow: 0.125rem 0.125rem 0.188rem #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        .active-filter {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #c0392b 100%) !important;
+            color: white !important;
+            border: none !important;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .no-projects-message {
+            display: none;
+            text-align: center;
+            padding: 60px 30px;
+            background: white;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تحسينات لأزرار التصفية */
+        .filter-buttons .btn {
+            transition: all 0.3s ease;
+            margin: 0 8px 8px 0;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 600;
+            border: 2px solid var(--primary-color);
+        }
+
+        .filter-buttons .btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .status-message {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        /* وسائل التواصل الاجتماعي */
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        .social-links .fa-facebook-f:hover {
+            background: #1877f2;
+            color: white !important;
+        }
+
+        .social-links .fa-twitter:hover {
+            background: #1da1f2;
+            color: white !important;
+        }
+
+        .social-links .fa-instagram:hover {
+            background: #e4405f;
+            color: white !important;
+        }
+
+        .social-links .fa-whatsapp:hover {
+            background: #25d366;
+            color: white !important;
+        }
+
+        /* تحسينات إضافية */
+        .badge {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        /* تحسينات التجاوب */
+        @media (max-width: 768px) {
+            .portfolio-section {
+                padding: 80px 0 30px;
+            }
+
+            .portfolio-item img {
+                height: 220px;
+            }
+
+            .filter-buttons .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+                margin: 0 5px 5px 0;
+            }
+
+            .project-info {
+                padding: 15px;
+            }
+
+            .project-info h4 {
+                font-size: 1.1rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            /* تحسينات شريط التنقل للجوال */
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+        }
+
+        /* تأثيرات دخول المشاريع */
+        .portfolio-item {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Lazy Loading للصور */
+        .portfolio-item img {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item img.lazy-loaded {
+            opacity: 1;
+        }
+
+        /* Modal لتكبير الصور */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .close-modal:hover {
+            color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Modal لتكبير الصور -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="image-modal-content" id="modalImage">
+    </div>
+
+    <!-- شريط التنقل المحدث -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <!-- ضع شعارك هنا -->
+                <img src="images/logo.jpg" alt="المُهيب | Al-Moheeb" class="logo-img">
+                <!-- <i class="fas fa-hard-hat text-warning me-2"></i> -->
+                المُهيب | Al-Moheeb
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="about.html">من نحن</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="index.html#services">خدماتنا</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="portfolio.html">معرض الأعمال</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="tel:+966569402115" class="btn btn-outline-primary me-2">
+                        <i class="fas fa-phone me-1"></i> اتصل الآن
+                    </a>
+                    <a href="moheebsufyan92mh@gmail.com" class="btn btn-outline-secondary">
+                        <i class="fas fa-envelope me-1"></i> إرسال بريد
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم الأعمال السابقة -->
+    <section class="portfolio-section">
+        <div class="container">
+            <h1 class="text-center section-title">معرض مشاريعنا</h1>
+            <p class="text-center lead mb-5">نفخر بعرض مجموعة مميزة من مشاريع العزل والجلي التي قمنا بتنفيذها بدقة واحترافية
+                عالية</p>
+
+            <!-- رسالة حالة -->
+            <div id="statusMessage" class="status-message" style="display: none;"></div>
+
+            <!-- أزرار التصفية المحدثة -->
+            <div class="filter-buttons text-center">
+                <button class="btn btn-outline-primary active-filter" data-filter="all">جميع المشاريع</button>
+                <button class="btn btn-outline-primary" data-filter="tank-insulation">عزل الخزانات</button>
+                <button class="btn btn-outline-primary" data-filter="roof-insulation">عزل الأسطح</button>
+                <button class="btn btn-outline-primary" data-filter="epoxy">إيبوكسي المواقف</button>
+                <button class="btn btn-outline-primary" data-filter="marble"> أعمال الرخام </button>
+            </div>
+
+            <!-- رسالة عدم وجود مشاريع -->
+            <div class="no-projects-message" id="noProjectsMessage">
+                <i class="fas fa-images fa-4x text-muted mb-4"></i>
+                <h4 class="text-muted mb-3">لا توجد مشاريع حالياً</h4>
+                <p class="text-muted mb-4">سيتم عرض المشاريع قريباً</p>
+                <a href="index.html#services" class="btn btn-primary">
+                    <i class="fas fa-arrow-right me-2"></i>تعرف على خدماتنا
+                </a>
+            </div>
+
+            <!-- معرض الأعمال -->
+            <div class="row" id="portfolio-grid">
+                <!-- سيتم ملؤها تلقائياً من قاعدة البيانات -->
+            </div>
+
+            <!-- قسم الاتصال السريع -->
+            <div class="text-center mt-5 pt-4">
+                <h4 class="mb-3">هل أعجبك ما رأيت؟</h4>
+                <p class="text-muted mb-4">تواصل معنا الآن لتحصل على خدمة مماثلة لمشروعك</p>
+                <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <a href="tel:+966569402115" class="btn btn-primary btn-lg">
+                        <i class="fas fa-phone me-2"></i> اتصل بنا
+                    </a>
+                    <a href="https://wa.me/966569402115" class="btn btn-success btn-lg" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i> تواصل عبر واتساب 
+                    </a>
+                    <a href="index.html#services" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-info-circle me-2"></i>  تعرف على الخدمات
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل المحدث -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>المُهيب | Al-Moheeb</h5>
+                    <p> مختصون في تقديم حلول العزل المائي والحراري وجلي وتلميع الرخام بجودة عالية وأسعار منافسة.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" class="me-2 text-decoration-none">
+                            <i class="fab fa-facebook-f text-primary fa-lg"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="me-2 text-decoration-none">
+                            <i class="fab fa-twitter text-info fa-lg"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="me-2 text-decoration-none">
+                            <i class="fab fa-instagram text-danger fa-lg"></i>
+                        </a>
+                        <a href="https://wa.me/966569402115" target="_blank" class="text-decoration-none">
+                            <i class="fab fa-whatsapp text-success fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>روابط سريعة</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none">الرئيسية</a></li>
+                        <!-- <li><a href="about.html" class="text-decoration-none">من نحن</a></li> -->
+                        <li><a href="index.html#services" class="text-decoration-none">خدماتنا</a></li>
+                        <li><a href="portfolio.html" class="text-decoration-none">معرض الأعمال</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <h5>خدماتنا</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="portfolio.html?category=tank-insulation" class="text-decoration-none">عزل خزانات
+                                المياه</a></li>
+                        <li><a href="portfolio.html?category=roof-insulation" class="text-decoration-none">عزل الأسطح
+                                والمباني</a></li>
+                        <li><a href="portfolio.html?category=epoxy" class="text-decoration-none">إيبوكسي مواقف
+                                السيارات</a></li>
+                        <li><a href="portfolio.html?category=marble" class="text-decoration-none"> جلي وتلميع الرخام </a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>اتصل بنا</h5>
+                    <address>
+                        <p class="mb-2">الهاتف: <a href="tel:+966569402115"
+                                class="text-decoration-none">+966569402115</a></p>
+                        <p class="mb-0">البريد الإلكتروني: <a href="moheebsufyan92mh@gmail.com"
+                                class="text-decoration-none">moheebsufyan92mh@gmail.com</a></p>
+                    </address>
+                    <div class="mt-3">
+                        <a href="https://wa.me/966569402115" class="btn btn-success btn-sm me-2" target="_blank">
+                            <i class="fab fa-whatsapp me-1"></i> واتساب
+                        </a>
+                        <a href="tel:+966569402115" class="btn btn-primary btn-sm">
+                            <i class="fas fa-phone me-1"></i> اتصل
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">تصميم المهندسين : </p>
+                    <p class="mb-0"> اشرف العيسائي | Email: ashraf.alessayi@gmail.com</p>
+                    <p class="mb-0"> اشيم مالك | Email: asheem.malek@gmail.com</p><br>
+                </div>
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2025 المُهيب | Al-Moheeb. جميع الحقوق محفوظة.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/966569402115" class="whatsapp-float" target="_blank" aria-label="تواصل معنا عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+
+    <script>
+        // نظام إدارة وعرض المشاريع من قاعدة البيانات - محدث للاتصال مع PHP
+        class PortfolioManager {
+            constructor() {
+                this.projects = [];
+                this.currentFilter = 'all';
+                this.init();
+            }
+
+            async init() {
+                console.log('🚀 بدء تحميل نظام المعرض من قاعدة البيانات...');
+                await this.loadProjects();
+                this.setupFilterSystem();
+                this.checkForUrlFilter();
+                this.setupLazyLoading();
+                this.setupImageModal();
+                this.startAutoRefresh();
+            }
+
+            // تحميل المشاريع من قاعدة البيانات
+            async loadProjects() {
+                try {
+                    this.showStatus('جاري تحميل المشاريع...', 'info');
+                    console.log('📥 جاري تحميل المشاريع من الخادم...');
+
+                    const response = await fetch('api.php?action=get_projects');
+                    const result = await response.json();
+
+                    if (result.success) {
+                        this.projects = result.data || [];
+                        this.displayProjects(this.currentFilter);
+                        this.hideStatus();
+                        // إزالة رسالة عدد المشاريع
+                    } else {
+                        throw new Error(result.message || 'فشل في تحميل المشاريع');
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في تحميل المشاريع:', error);
+                    this.projects = [];
+                    this.displayProjects(this.currentFilter);
+                    this.showStatus('فشل في تحميل المشاريع من الخادم', 'error');
+                }
+            }
+
+            // تحديث تلقائي للمشاريع كل 10 ثواني
+            startAutoRefresh() {
+                setInterval(async () => {
+                    await this.refreshProjectsSilently();
+                }, 10000); // 10 ثواني
+            }
+
+            // تحديث صامت للمشاريع
+            async refreshProjectsSilently() {
+                try {
+                    const response = await fetch('api.php?action=get_projects');
+                    const result = await response.json();
+
+                    if (result.success) {
+                        const newProjects = result.data || [];
+                        if (JSON.stringify(this.projects) !== JSON.stringify(newProjects)) {
+                            this.projects = newProjects;
+                            this.displayProjects(this.currentFilter);
+                            console.log('🔄 تم تحديث المشاريع تلقائياً');
+                        }
+                    }
+                } catch (error) {
+                    console.error('❌ خطأ في التحديث التلقائي:', error);
+                }
+            }
+
+            displayProjects(filterCategory = 'all') {
+                this.currentFilter = filterCategory;
+
+                const container = document.getElementById('portfolio-grid');
+                const noProjectsMessage = document.getElementById('noProjectsMessage');
+                let filteredProjects = this.projects;
+
+                if (filterCategory !== 'all') {
+                    filteredProjects = this.projects.filter(project => project.category === filterCategory);
+                }
+                // إضافة للتصحيح
+                console.log('🔍 تصفية المشاريع:', {
+                    filter: filterCategory,
+                    allProjects: this.projects,
+                    filteredProjects: filteredProjects,
+                    marbleProjects: this.projects.filter(p => p.category === 'marble')
+                });
+
+                if (filteredProjects.length === 0) {
+                    container.innerHTML = '';
+                    noProjectsMessage.style.display = 'block';
+                    return;
+                } else {
+                    noProjectsMessage.style.display = 'none';
+                }
+
+                container.innerHTML = filteredProjects.map((project, index) => `
+                    <div class="col-lg-4 col-md-6 portfolio-item" data-category="${project.category}" style="animation-delay: ${index * 0.1}s">
+                        <img src="${project.image_url}" 
+                             alt="${project.title}" 
+                             class="lazy project-image"
+                             loading="lazy"
+                             onclick="portfolioManager.openImageModal('${project.image_url}')"
+                             onerror="this.src='images/1.jpg'">
+                        <div class="project-info">
+                            <h4>${project.title}</h4>
+                            <p>${project.description || 'لا يوجد وصف'}</p>
+                            <div class="project-meta">
+                                <div>
+                                    ${project.location ? `<span class="badge bg-primary me-1">📍 ${project.location}</span>` : ''}
+                                    ${project.duration ? `<span class="badge bg-success me-1">⏱️ ${project.duration}</span>` : ''}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                this.initializeLazyLoading();
+            }
+
+            setupFilterSystem() {
+                const filterButtons = document.querySelectorAll('.filter-buttons .btn');
+
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => {
+                            btn.classList.remove('active', 'active-filter');
+                            btn.classList.add('btn-outline-primary');
+                        });
+
+                        button.classList.add('active', 'active-filter');
+                        button.classList.remove('btn-outline-primary');
+
+                        const filterValue = button.getAttribute('data-filter');
+                        this.currentFilter = filterValue;
+                        this.displayProjects(filterValue);
+                        this.updateUrl(filterValue);
+                    });
+                });
+
+                if (this.currentFilter === 'all') {
+                    const allButton = document.querySelector('[data-filter="all"]');
+                    if (allButton) {
+                        allButton.classList.add('active', 'active-filter');
+                        allButton.classList.remove('btn-outline-primary');
+                    }
+                }
+            }
+
+            setupLazyLoading() {
+                // سيتم تنفيذ Lazy Loading عبر خاصية loading="lazy" في HTML
+            }
+
+            initializeLazyLoading() {
+                const images = document.querySelectorAll('img.lazy');
+
+                if ('IntersectionObserver' in window) {
+                    const imageObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.classList.add('lazy-loaded');
+                                imageObserver.unobserve(img);
+                            }
+                        });
+                    });
+
+                    images.forEach(img => imageObserver.observe(img));
+                } else {
+                    // Fallback for older browsers
+                    images.forEach(img => {
+                        img.classList.add('lazy-loaded');
+                    });
+                }
+            }
+
+            setupImageModal() {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                const closeBtn = document.querySelector('.close-modal');
+
+                // إغلاق Modal عند النقر على X
+                closeBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+
+                // إغلاق Modal عند النقر خارج الصورة
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+
+                // إغلاق Modal بالزر Escape
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+
+            openImageModal(imageSrc) {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+
+                modal.style.display = 'block';
+                modalImg.src = imageSrc;
+            }
+
+            checkForUrlFilter() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const categoryFromUrl = urlParams.get('category');
+
+                if (categoryFromUrl) {
+                    this.currentFilter = categoryFromUrl;
+                    this.displayProjects(categoryFromUrl);
+                    this.updateActiveButton(categoryFromUrl);
+                }
+            }
+
+            updateActiveButton(filterValue) {
+                const filterButtons = document.querySelectorAll('.filter-buttons .btn');
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'active-filter');
+                    btn.classList.add('btn-outline-primary');
+
+                    if (btn.getAttribute('data-filter') === filterValue) {
+                        btn.classList.add('active', 'active-filter');
+                        btn.classList.remove('btn-outline-primary');
+                    }
+                });
+            }
+
+            updateUrl(filterValue) {
+                const newUrl = filterValue === 'all'
+                    ? 'portfolio.html'
+                    : `portfolio.html?category=${filterValue}`;
+                window.history.replaceState({}, '', newUrl);
+            }
+
+            getCurrentFilter() {
+                return this.currentFilter;
+            }
+
+            async refreshProjects() {
+                const currentFilter = this.getCurrentFilter();
+                await this.loadProjects();
+                this.displayProjects(currentFilter);
+                this.updateActiveButton(currentFilter);
+            }
+
+            formatDate(dateString) {
+                if (!dateString) return '';
+                const date = new Date(dateString);
+                return date.toLocaleDateString('ar-EG', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+
+            showStatus(message, type) {
+                const statusElement = document.getElementById('statusMessage');
+                statusElement.className = `status-message ${type}`;
+                statusElement.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation-triangle' : 'info'}-circle me-2"></i>
+                    ${message}
+                `;
+                statusElement.style.display = 'block';
+            }
+
+            hideStatus() {
+                const statusElement = document.getElementById('statusMessage');
+                statusElement.style.display = 'none';
+            }
+        }
+
+        // دالة للتحديث من admin
+        window.updatePortfolioProjects = async function () {
+            if (window.portfolioManager) {
+                console.log('🔄 تحديث المشاريع من admin');
+                await window.portfolioManager.refreshProjects();
+            }
+        };
+
+        // دالة إلغاء التصفية
+        window.clearFilter = function () {
+            if (window.portfolioManager) {
+                window.portfolioManager.displayProjects('all');
+                window.portfolioManager.updateActiveButton('all');
+                window.portfolioManager.updateUrl('all');
+            }
+        };
+
+        // تهيئة النظام عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function () {
+            window.portfolioManager = new PortfolioManager();
+        });
+    </script>
+</body>
+
+</html>
